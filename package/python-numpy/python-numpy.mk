@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-PYTHON_NUMPY_VERSION = 1.21.2
+PYTHON_NUMPY_VERSION = 1.22.2
 PYTHON_NUMPY_SOURCE = numpy-$(PYTHON_NUMPY_VERSION).tar.gz
 PYTHON_NUMPY_SITE = https://github.com/numpy/numpy/releases/download/v$(PYTHON_NUMPY_VERSION)
 PYTHON_NUMPY_LICENSE = BSD-3-Clause, MIT, Zlib
@@ -31,6 +31,13 @@ PYTHON_NUMPY_ENV += F90=$(TARGET_FC)
 else
 PYTHON_NUMPY_BUILD_OPTS = --fcompiler=None
 endif
+
+PYTHON_NUMPY_BUILD_OPTS += --cpu-dispatch="max -avx512f -avx512cd \
+-avx512_knl -avx512_knm -avx512_skx -avx512_clx -avx512_cnl -avx512_icl"
+
+# Disable SVML when cross-compiling
+# see: https://github.com/numpy/numpy/blob/f32f47d58e51111a9c995b2f53dab0d0bdb1c927/numpy/core/setup.py#L30
+PYTHON_NUMPY_ENV += NPY_DISABLE_SVML=1
 
 define PYTHON_NUMPY_CONFIGURE_CMDS
 	-rm -f $(@D)/site.cfg
