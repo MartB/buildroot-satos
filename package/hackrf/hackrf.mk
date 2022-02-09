@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-HACKRF_VERSION = 2018.01.1
+HACKRF_VERSION = 2021.03.1
 HACKRF_SITE = https://github.com/mossmann/hackrf/releases/download/v$(HACKRF_VERSION)
 HACKRF_SOURCE = hackrf-$(HACKRF_VERSION).tar.xz
 HACKRF_LICENSE = GPL-2.0+, BSD-3-Clause
@@ -13,7 +13,7 @@ HACKRF_DEPENDENCIES = fftw-single libusb
 HACKRF_SUBDIR = host
 HACKRF_INSTALL_STAGING = YES
 
-HACKRF_CONF_OPTS += -DBUILD_HACKRF_TOOLS=ON
+HACKRF_CONF_OPTS += -DBUILD_HACKRF_TOOLS=ON -DFFTW_LIBRARIES=$(STAGING_DIR)/usr/lib/
 
 ifeq ($(BR2_PACKAGE_HAS_UDEV),y)
 HACKRF_CONF_OPTS += \
