@@ -1,4 +1,4 @@
-# From http://snapshot.debian.org/archive/debian/20141023T043132Z/pool/main/u/usbmount/usbmount_0.0.22.dsc
-sha256  a2b8581534b6c92f0376d202639dbc28862d3834dac64c35bde752f84975527d  usbmount_0.0.22.tar.gz
+# Locally computed
+sha256  98e0bf9ff289372c8740b1534ff157ab1ac48f3ed85c51f486331f00cb2d0954  usbmount-9a92e7d622662380f4329e0db17e263509715722.tar.gz
 # Locally computed
 sha256  797a416c87923338aa3ed05cce3cfdac6101f0142e72d5ab05c7bd76af5e527b  debian/copyright
