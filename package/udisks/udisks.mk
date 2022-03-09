@@ -39,4 +39,14 @@ UDISKS_CONF_OPTS = \
 	--disable-vdo \
 	--disable-zram
 
+ifeq ($(BR2_PACKAGE_HAS_UDEV),y)
+define UDISKS_INSTALL_UDEV_RULES
+	if test -d $(TARGET_DIR)/etc/udev/rules.d ; then \
+		cp $(@D)/data/80-udisks2.rules $(TARGET_DIR)/etc/udev/rules.d/ ; \
+	fi;
+endef
+
+UDISKS_POST_INSTALL_TARGET_HOOKS += UDISKS_INSTALL_UDEV_RULES
+endif
+
 $(eval $(autotools-package))
